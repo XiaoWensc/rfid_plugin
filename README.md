@@ -4,7 +4,7 @@ Flutter project.
 
 ## 准备
 
-### 引入一来
+### 引入依赖
 ```yaml
 
   rfid_plugin:
