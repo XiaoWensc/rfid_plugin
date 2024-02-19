@@ -9,7 +9,7 @@ Flutter project.
 
   rfid_plugin:
     git:
-      url: https://github.com/XiaoWensc/rfid_plugin.git
+      url: git@github.com:XiaoWensc/rfid_plugin.git
       ref: master
 ```
 
