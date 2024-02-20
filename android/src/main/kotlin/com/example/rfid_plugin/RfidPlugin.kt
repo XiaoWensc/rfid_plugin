@@ -65,7 +65,7 @@ class RfidPlugin: FlutterPlugin, MethodCallHandler {
           result.success(null)
           return
         }
-        val map = HashMap<String, Any>()
+        val map = HashMap<String, Any?>()
         val epcBytes = ArrayList<Int>()
         tags.epcBytes.forEach {
           epcBytes.add(it.toInt())
