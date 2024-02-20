@@ -63,11 +63,7 @@ Returns:
 
 ### 启动识别Tag循环，只是开启识别Tag循环，之后将识别到的标签号上传到缓冲区
 ```
-bool data = await RfidPlugin().startInventoryTag(flagAnti: 0, initQ: 1, tidLen: 1);
-Parameters:
-flagAnti - 是否使用防碰撞识别功能,默认使用0
-initQ - 防碰撞识别过程的初始Q值，flagAnti为1时有效 默认 1
-tidLen - TID的长度，单位为“字”
+bool data = await RfidPlugin().startInventoryTag();
 Returns:
 是否启动成功
 ```
