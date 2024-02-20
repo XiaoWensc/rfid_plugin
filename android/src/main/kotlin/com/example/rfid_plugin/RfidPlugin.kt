@@ -59,7 +59,11 @@ class RfidPlugin: FlutterPlugin, MethodCallHandler {
       } else if (call.method == FREE) {
         result.success(RFIDWithUHFUART.getInstance().free())
       } else if (call.method == READ_TAG) {
-        val tags : UHFTAGInfo = RFIDWithUHFUART.getInstance().readTagFromBuffer()
+        val tags : UHFTAGInfo? = RFIDWithUHFUART.getInstance().readTagFromBuffer()
+        if (tags == null) {
+          result.error("INIT_ERR", "readData is null", null)
+          return
+        }
         Log.d("devin_zz", READ_TAG)
         val map = HashMap<String, Any>()
         val epcBytes = ArrayList<Int>()
