@@ -56,16 +56,8 @@ class MethodChannelRfidPlugin extends RfidPluginPlatform {
   }
 
   @override
-  Future<bool> startInventoryTag(
-      {required int flagAnti, required int initQ, required int tidLen}) async {
-    bool? state = await methodChannel.invokeMethod<bool>(
-      'startInventoryTag',
-      {
-        "flagAnti": flagAnti,
-        "initQ": initQ,
-        "tidLen": tidLen,
-      },
-    );
+  Future<bool> startInventoryTag() async {
+    bool? state = await methodChannel.invokeMethod<bool>('startInventoryTag');
     return state ?? false;
   }
 

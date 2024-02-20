@@ -55,8 +55,7 @@ class RfidPluginWeb extends RfidPluginPlatform {
   }
 
   @override
-  Future<bool> startInventoryTag(
-      {required int flagAnti, required int initQ, required int tidLen}) {
+  Future<bool> startInventoryTag() {
     // TODO: implement startInventoryTag
     throw UnimplementedError();
   }

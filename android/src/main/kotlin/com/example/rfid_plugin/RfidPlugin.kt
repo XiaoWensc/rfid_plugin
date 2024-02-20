@@ -80,12 +80,12 @@ class RfidPlugin: FlutterPlugin, MethodCallHandler {
 
         result.success(map)
       } else if (call.method == startInventoryTag) {
-        val flagAnti = call.argument<Int>("flagAnti") ?: 0 //是否使用防碰撞识别功能,默认使用0
-        val initQ = call.argument<Int>("initQ") ?: 1 //防碰撞识别过程的初始Q值，flagAnti为1时有效
-        // 新增
-        val tidLen = call.argument<Int>("tidLen") ?: 1 //TID的长度，单位为“字”
+//        val flagAnti = call.argument<Int>("flagAnti") ?: 0 //是否使用防碰撞识别功能,默认使用0
+//        val initQ = call.argument<Int>("initQ") ?: 1 //防碰撞识别过程的初始Q值，flagAnti为1时有效
+//        // 新增
+//        val tidLen = call.argument<Int>("tidLen") ?: 1 //TID的长度，单位为“字”
 
-        val data  = RFIDWithUHFUART.getInstance().startInventoryTag(flagAnti, initQ, tidLen)
+        val data  = RFIDWithUHFUART.getInstance().startInventoryTag()
         result.success(data)
       } else if (call.method == stopInventory) {
         result.success(RFIDWithUHFUART.getInstance().stopInventory())

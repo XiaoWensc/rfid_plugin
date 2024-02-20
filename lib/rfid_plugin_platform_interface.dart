@@ -38,10 +38,6 @@ abstract class RfidPluginPlatform extends PlatformInterface {
     required String uii,
   });
   Future<UHFTAGInfo?> readTagFromBuffer();
-  Future<bool> startInventoryTag({
-    required int flagAnti,
-    required int initQ,
-    required int tidLen,
-  });
+  Future<bool> startInventoryTag();
   Future<bool> stopInventory();
 }

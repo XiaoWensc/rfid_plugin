@@ -30,13 +30,8 @@ class RfidPlugin {
     return RfidPluginPlatform.instance.readTagFromBuffer();
   }
 
-  Future<bool> startInventoryTag({
-    required int flagAnti,
-    required int initQ,
-    required int tidLen,
-  }) {
-    return RfidPluginPlatform.instance
-        .startInventoryTag(flagAnti: flagAnti, initQ: initQ, tidLen: tidLen);
+  Future<bool> startInventoryTag() {
+    return RfidPluginPlatform.instance.startInventoryTag();
   }
 
   Future<bool> stopInventory() {
