@@ -50,7 +50,11 @@ class MethodChannelRfidPlugin extends RfidPluginPlatform {
 
   @override
   Future<UHFTAGInfo?> readTagFromBuffer() async {
-    Map<String, dynamic> json = await methodChannel.invokeMethod('readTag');
+    Map<String, dynamic>? json =
+        await methodChannel.invokeMapMethod<String, dynamic>('readTag');
+    if (json == null) {
+      return null;
+    }
     final UHFTAGInfo tags = UHFTAGInfo.fromJson(json);
     return tags;
   }

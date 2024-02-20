@@ -15,7 +15,7 @@ class UHFTAGInfo {
       this.ant, this.reserved, this.remain, this.index, this.count);
 
   UHFTAGInfo.fromJson(Map<String, dynamic> json) {
-    epcBytes = json['epcBytes'];
+    epcBytes = json['epcBytes']?.cast<int>();
     pc = json['pc'];
     epc = json['epc'];
     tid = json['tid'];

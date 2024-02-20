@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rfid_plugin/UHFTAGInfo.dart';
 import 'package:rfid_plugin/rfid_plugin.dart';
 
 void main() {
@@ -28,8 +29,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void init() async {
-    bool state = await _rfidPlugin.init();
-    print('初始化：$state');
+    UHFTAGInfo? state = await _rfidPlugin.readTagFromBuffer();
+    print('数据：${state?.toJson()}');
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
