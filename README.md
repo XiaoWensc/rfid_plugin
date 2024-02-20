@@ -30,7 +30,7 @@ allprojects {
 
 ### 初始化 打开设备
 ```
-bool isInit = await RfidPlugin().init;
+bool isInit = await RfidPlugin().init();
 isInit 是否开启设备
 ```
 

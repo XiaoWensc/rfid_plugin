@@ -2,8 +2,7 @@ package com.example.rfid_plugin
 
 import androidx.annotation.NonNull
 
-import com.rscja.deviceapi.RFIDWithUHFA4
-import com.rscja.deviceapi.entity.SimpleRFIDEntity
+import com.rscja.deviceapi.RFIDWithUHFUART
 import com.rscja.deviceapi.entity.UHFTAGInfo
 import com.rscja.deviceapi.exception.ConfigurationException
 import com.rscja.deviceapi.interfaces.IUHF
@@ -41,14 +40,14 @@ class RfidPlugin: FlutterPlugin, MethodCallHandler {
       if (call.method == "getPlatformVersion") {
         result.success("Android ${android.os.Build.VERSION.RELEASE}")
       } else if (call.method == INIT) {
-        result.success(RFIDWithUHFA4.getInstance().init())
+        result.success(RFIDWithUHFUART.getInstance().init())
       } else if (call.method == READ_DATA) {
         val accessPwd = call.argument<String>("accessPwd") //标签的ACCESS PASSWORD（4 byte）
         val bank = call.argument<Int>("bank") ?: 0//标签的存储区
         val ptr = call.argument<Int>("ptr") ?: 0//起始地址的偏移量
         val cnt = call.argument<Int>("cnt") ?: 0//数据的长度（Word为单位，不能为0）
 
-        val data  = RFIDWithUHFA4.getInstance().readData(accessPwd, bank, ptr, cnt)
+        val data  = RFIDWithUHFUART.getInstance().readData(accessPwd, bank, ptr, cnt)
 
         if (data == null) {
           Log.d("devin_zz", "读取失败")
@@ -58,9 +57,9 @@ class RfidPlugin: FlutterPlugin, MethodCallHandler {
           result.success(data)
         }
       } else if (call.method == FREE) {
-        result.success(RFIDWithUHFA4.getInstance().free())
+        result.success(RFIDWithUHFUART.getInstance().free())
       } else if (call.method == READ_TAG) {
-        val tags : UHFTAGInfo = RFIDWithUHFA4.getInstance().readTagFromBuffer()
+        val tags : UHFTAGInfo = RFIDWithUHFUART.getInstance().readTagFromBuffer()
         Log.d("devin_zz", READ_TAG)
         val map = HashMap<String, Any>()
         val epcBytes = ArrayList<Int>()
@@ -86,13 +85,13 @@ class RfidPlugin: FlutterPlugin, MethodCallHandler {
         // 新增
         val tidLen = call.argument<Int>("tidLen") ?: 1 //TID的长度，单位为“字”
 
-        val data  = RFIDWithUHFA4.getInstance().startInventoryTag(flagAnti, initQ, tidLen)
+        val data  = RFIDWithUHFUART.getInstance().startInventoryTag(flagAnti, initQ, tidLen)
         result.success(data)
       } else if (call.method == stopInventory) {
-        result.success(RFIDWithUHFA4.getInstance().stopInventory())
+        result.success(RFIDWithUHFUART.getInstance().stopInventory())
       } else if (call.method == convertUiiToEPC) {
         val uii = call.argument<String>("uii") ?: "1"//标签的UII
-//        val data  = RFIDWithUHFA4.getInstance().convertUiiToEPC(uii)
+//        val data  = RFIDWithUHFUART.getInstance().convertUiiToEPC(uii)
 //
 //        if (data == null) {
 //          Log.d("devin_zz", "读取失败")
